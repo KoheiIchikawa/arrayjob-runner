@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# NOTE: This script is not intended to be run directly by users.
+# It is designed to be invoked from arrayjob-runner.sh.
+
 if [ -z "$SLURM_ARRAY_TASK_ID" ]; then
     echo "Use arrayjob-runner.sh to submit job." >&2
     exit 1
