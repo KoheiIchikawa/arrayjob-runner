@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# This script processes a single task within an ArrayJob. 
+# It accepts a single command-line argument and processes it accordingly.
+# If the processing fails, please ensure the script returns a non-zero exit status.
+# If you rely on the exit status of the last command in this script, there's no need
+# to explicitly return the exit status.
+# However, if a command fails mid-script and you want to treat that as a failure of
+# the script, explicitly return a non-zero exit status.
+# Or consider commenting out the following line:
+# set -eu -o pipefail
+
 TASK="$1"
 
 # === BEGIN USER EDIT ===
@@ -8,10 +18,4 @@ echo "Processing: $TASK"
 
 
 
-# There's no need to explicitly specify an exit status if you use the exit status
-# of the last command as the exit status returned by this script. 
-# If a command in the middle of the script fails and you want to treat it as a 
-# failure of the script, ensure you explicitly return a non-zero exit status.
-# Or consider running the following command at the beginning:
-# set -eu -o pipefail
 # === END USER EDIT ===
