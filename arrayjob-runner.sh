@@ -59,6 +59,6 @@ N=$(( (TOTAL_TASKS + TASKS_PER_JOB - 1) / TASKS_PER_JOB ))
 
 echo "Processing tasks in $TASK_LIST with $TASK_SCRIPT, $TASKS_PER_JOB tasks each."
 echo "Total tasks: $TOTAL_TASKS"
-echo "Submitting job: sbatch --job-name=$JOB_NAME --array=1-$N $@ job.sh $TASK_LIST $TASKS_PER_JOB $TASK_SCRIPT"
+echo "Submitting job: sbatch --job-name=$JOB_NAME --array=1-$N $* job.sh $TASK_LIST $TASKS_PER_JOB $TASK_SCRIPT"
 
-sbatch --job-name=$JOB_NAME --array=1-$N $@ job.sh "$TASK_LIST" "$TASKS_PER_JOB" "$TASK_SCRIPT"
+sbatch --job-name="$JOB_NAME" --array=1-$N "$@" job.sh "$TASK_LIST" "$TASKS_PER_JOB" "$TASK_SCRIPT"

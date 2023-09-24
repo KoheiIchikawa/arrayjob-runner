@@ -31,10 +31,8 @@ END_LINE=$(( SLURM_ARRAY_TASK_ID * TASKS_PER_JOB ))
 for LINE in $(seq $START_LINE $END_LINE); do
     TASK=$(sed -n "${LINE}p" "$TASK_LIST")
 
-    if [ ! -z "$TASK" ]; then
-        "$TASK_SCRIPT" "$TASK"
-
-        if [ $? -eq 0 ]; then
+    if [ -n "$TASK" ]; then
+        if "$TASK_SCRIPT" "$TASK"; then
             echo "Completed: $TASK"
         else
             echo "Failed: $TASK"
