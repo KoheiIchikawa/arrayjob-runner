@@ -4,8 +4,8 @@
 
 ## Features:
 
-- **Task Division**: Split large task lists into manageable and effient sized chunks for parallel execution.
-- **Costom Task Program**: Supports user-defined tasks.
+- **Task Division**: Split large task lists into manageable and efficient-sized chunks for parallel execution.
+- **Custom Task Program**: Supports user-defined tasks.
 
 ## Prerequisites:
 
@@ -13,9 +13,9 @@ Ensure you have Slurm set up and configured properly on your system.
 
 ## Usage:
 
-1. Prepare a list of task.
+1. Prepare a list of tasks.
 
-    Typically, a file listing the files to be processed is used. Each line is split and passed to the task processing program as a command-line argument.
+    Typically, a file listing the files to be processed is used. Each line is split and passed to the task-processing program as a command-line argument.
 
     ```
     /path/to/file001
