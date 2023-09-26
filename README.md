@@ -34,7 +34,7 @@ Ensure you have Slurm set up and configured properly on your system.
 
     A program that accepts a single command-line argument and processes it accordingly. If the processing fails, it should return a non-zero exit status. Tasks that return a non-zero exit status are logged in the standard error. You can use `task_template.sh` as a template.
 
-    This program can also be executed manually for testing purposes. Before running bulk processes with ArrayJob, you can perform a preliminary test by providing a test input as a command-line argument and executing this program.
+    This program can also be executed manually for testing purposes. Before running bulk processes with ArrayJob, you can perform a preliminary test by executing this program with a test input given as a command-line argument.
 
 
 3. Run `arrayjob-runner.sh`:
@@ -42,7 +42,7 @@ Ensure you have Slurm set up and configured properly on your system.
     ```
     ./arrayjob-runner.sh -f <tasklist> [-n <tasks_per_job>] -s <task_program> -- [additional options for sbatch...]
     ```
-    This program splits the `tasklist` into chunks of `tasks_per_job` lines each, and creates an ArrayJob. The specified `task_program` is used for processing the tasks. If `tasks_per_job` is omitted, the `tasklist` is divided line by line, generating an ArrayJob that creates a job for each line. `tasks_per_job` is useful for adjusting the granularity of individual jobs in an ArrayJob. If each task is too small and there's concern that creating a separate job for every line in the `tasklist` would introduce significant overhead, specify `tasks_per_job` to adjust the number of tasks handled by a single job in an ArrayJob.
+    This program splits the `tasklist` into chunks of `tasks_per_job` lines each, and creates an ArrayJob. The specified `task_program` is used to process each task. If `tasks_per_job` is omitted, the `tasklist` is divided line by line, generating an ArrayJob that creates a job for each line. `tasks_per_job` is useful for adjusting the granularity of individual jobs in an ArrayJob. If each task is too small and there's concern that creating a separate job for every line in the `tasklist` would introduce significant overhead, specify `tasks_per_job` to adjust the number of tasks handled by a single job in an ArrayJob.
 
     You can specify command-line arguments to be passed to `sbatch` after `--`, such as designating the required CPU or memory for each job within the ArrayJob. For easy tracking of failed tasks, consider separately redirecting the standard error output.
 
